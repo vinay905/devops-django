@@ -1,8 +1,7 @@
 pipeline {
-    agent any
-    tools 
+    agent
     {
-        dockerTool 'Docker'
+        docker {image 'node:django-devops'} 
     }
     stages 
     { 

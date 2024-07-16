@@ -6,7 +6,7 @@ pipeline {
         {
             steps {
                 script {
-                    dockerImage = docker.build("django-devops")
+                    dockerImage = docker.build("django-devops:latest")
                 }
             }
         }

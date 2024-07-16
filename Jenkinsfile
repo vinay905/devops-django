@@ -6,7 +6,7 @@ pipeline {
         {
             steps {
                 script {
-                    dockerImage = docker.build("django-devops:latest")
+                    dockerImage = docker.build("django-devops")
                 }
             }
         }
@@ -15,9 +15,16 @@ pipeline {
         {
             steps {
                 script {
-                    docker.image("django-devops").run("--rm --name django-container")
+                    bat 'docker run django-devops'
                 }
             }
+        }
+    }
+    
+    post {
+        always {
+            junit '**/test-reports/*.xml'
+            archiveArtifacts artifacts: '**/test-reports/*.xml', allowEmptyArchive: true
         }
     }
 }

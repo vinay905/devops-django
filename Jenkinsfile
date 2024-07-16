@@ -14,7 +14,7 @@ pipeline {
             steps {
                 script {
                     // Run docker container and execute pytest with output to report.xml
-                    docker.image("testcase").run("testcase")
+                    bat "docker run testcase"
                 }
             }
         }

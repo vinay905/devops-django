@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 8000
 
 # Define the command to run the Django server
-CMD ["pytest"]
+CMD ["pytest --junitxml=report.xml"]

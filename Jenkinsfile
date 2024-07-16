@@ -23,7 +23,7 @@ pipeline {
             steps {
                 script {
                     def containerId = bat(script: 'docker ps -alq', returnStdout: true).trim()
-                    bat "docker container cp ${containerId}:/app/report.xml ./report.xml"
+                    echo containerId
                 }
             }
         }

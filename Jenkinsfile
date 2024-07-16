@@ -13,13 +13,10 @@ pipeline {
 
         stage('Run tests') 
         {
-            steps 
-            {
-                steps {
-                    script {
-                        docker.image("django-devops").run("--rm --name django-container")
-                    }
-                }      
+            steps {
+                script {
+                    docker.image("django-devops").run("--rm --name django-container")
+                }
             }
         }
     }

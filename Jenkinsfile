@@ -14,7 +14,7 @@ pipeline {
             steps {
                 script {
                     // Run docker container and execute pytest with output to report.xml
-                    docker.image("django-devops").run("--rm --name django-container pytest --junitxml=/app/report.xml")
+                    docker.image("django-devops").run("--rm --name django-container")
                 }
             }
         }

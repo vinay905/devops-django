@@ -14,7 +14,7 @@ pipeline {
             steps {
                 script {
                     // Run docker container and execute pytest with output to report.xml
-                    docker.image("django-devops").run("--rm --name django-container django-devops")
+                    docker.image("django-devops").run("--rm --name django-container")
                 }
             }
         }
@@ -22,8 +22,9 @@ pipeline {
         stage('Copy Report') {
             steps {
                 script {
-                    def containerId = bat(script: 'docker ps -aqf name=django-container', returnStdout: true).trim()
-                    bat "docker container cp ${containerId}:/app/report.xml ./report.xml"
+                    // def containerId = bat(script: 'docker ps -aqf name=django-container', returnStdout: true).trim()
+                    // bat "docker container cp ${containerId}:/app/report.xml ./report.xml"
+                     junit '*/target/.xml'
                 }
             }
         }

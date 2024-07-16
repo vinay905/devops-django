@@ -15,7 +15,7 @@ pipeline {
         {
             steps {
                 script {
-                    bat 'docker run django-devops'
+                    docker.image("django-devops").run("--rm --name django-container")
                 }
             }
         }

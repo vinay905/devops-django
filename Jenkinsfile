@@ -18,9 +18,7 @@ pipeline {
         {
             steps {
                 script {
-                    dockerImage.inside {
-                        sh 'python myproject/manage.py test mytests'
-                    }
+                    bat 'docker run django-devops'
                 }
             }
         }

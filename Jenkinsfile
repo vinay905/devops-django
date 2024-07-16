@@ -13,7 +13,7 @@ pipeline {
 
         stage('Run tests') 
         {
-            stage('Build Docker image') 
+            steps 
             {
                 script {
                         docker.image('django-devops').inside {

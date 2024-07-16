@@ -13,13 +13,13 @@ pipeline {
 
         stage('Run tests') 
         {
-            stage('Build Docker image') 
+            steps 
             {
-                script {
-                        docker.image('django-devops').inside {
-                            sh 'pytest --junitxml=report.xml'
-                        }
+                steps {
+                    script {
+                        docker.image("django-devops").run("--rm --name django-container")
                     }
+                }      
             }
         }
     }

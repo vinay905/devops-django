@@ -18,12 +18,11 @@ pipeline {
                 }
             }
         }
-
-        stage('Report Results') 
-        {
-            steps {
-                junit '**/test_report.html'  
-                }
+    }
+    post {
+        always {
+            junit 'reports/test-results.xml'
+            cleanWs()
         }
     }
 }

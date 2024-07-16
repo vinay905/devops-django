@@ -1,9 +1,7 @@
 pipeline {
     agent any
-    stages 
-    { 
-        stage('Build Docker image') 
-        {
+    stages {
+        stage('Build Docker image') {
             steps {
                 script {
                     dockerImage = docker.build("django-devops:latest")
@@ -11,11 +9,14 @@ pipeline {
             }
         }
 
-        stage('Run tests') 
-        {
+        stage('Run tests') {
             steps {
                 script {
-                    docker.image("django-devops:latest").run("--rm --name django-container")
+                    // Run tests inside the Docker container and capture results
+                    sh """
+                    docker run --rm --name django-container -v \${WORKSPACE}:/app \\
+                    django-devops:latest pytest --junitxml=/app/test-results.xml
+                    """
                 }
             }
         }

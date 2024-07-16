@@ -23,8 +23,7 @@ pipeline {
             steps {
                 script {
                     def containerId = bat(script: 'docker ps -aqf name=django-container', returnStdout: true).trim()
-                    echo containerId
-                    // bat "docker container cp ${containerId}:/app/report.xml ./report.xml"
+                    bat "docker container cp 002026cb2bc3:/app/report.xml ./report.xml"
                 }
             }
         }

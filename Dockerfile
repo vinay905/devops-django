@@ -16,5 +16,6 @@ COPY . .
 # Expose port 8000 for the Django app
 EXPOSE 8000
 
-# Define the command to run the Django server
-CMD ["python", "manage.py", "test", "mytests"]
+# run the tests
+CMD ["pytest", "mytests/test_views.py","--junitxml=./report.xml"]
+

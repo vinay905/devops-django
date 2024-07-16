@@ -1,30 +1,22 @@
 pipeline {
     agent any
-    stages 
-    { 
-        stage('Build Docker image') 
-        {
+
+    stages {
+        stage('Build Docker image') {
             steps {
                 script {
-                    dockerImage = docker.build("django-devops:latest")
+                    dockerImage = docker.build("testcase")
                 }
             }
         }
 
-        stage('Run tests') 
-        {
+        stage('Run tests') {
             steps {
                 script {
-                    docker.image("django-devops").run("--rm --name django-container")
+                    // Run docker container and execute pytest with output to report.xml
+                    bat "docker run testcase"
                 }
             }
-        }
-    }
-    
-    post {
-        always {
-            junit '**/test-reports/*.xml'
-            archiveArtifacts artifacts: '**/test-reports/*.xml', allowEmptyArchive: true
         }
     }
 }

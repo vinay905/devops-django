@@ -5,7 +5,7 @@ pipeline {
         stage('Build Docker image') {
             steps {
                 script {
-                    dockerImage = docker.build("django-devops")
+                    dockerImage = docker.build("testcase")
                 }
             }
         }
@@ -14,7 +14,7 @@ pipeline {
             steps {
                 script {
                     // Run docker container and execute pytest with output to report.xml
-                    docker.image("django-devops").run("--rm --name django-container ${dockerImage}")
+                    docker.image("testcase").run("--rm --name django-container")
                 }
             }
         }

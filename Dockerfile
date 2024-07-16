@@ -17,5 +17,5 @@ COPY . .
 EXPOSE 8000
 
 # run the tests
-CMD ["pytest", "mytests/test_views.py"]
+CMD ["pytest", "mytests/test_views.py","--junitxml=C:/Users/Vinay/Desktop/PythonDevops/report.xml"]
 

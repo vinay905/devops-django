@@ -15,7 +15,7 @@ pipeline {
         {
             steps {
                 script {
-                    docker.image("django-devops:latest").run("--rm --name django-container")
+                    docker.image("django-devops").run("--rm --name django-container")
                 }
             }
         }

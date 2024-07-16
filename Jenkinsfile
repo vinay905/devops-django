@@ -23,10 +23,10 @@ pipeline {
             steps {
                 script {
                     // Find the running container ID based on the container name
-                    def containerId = sh(script: "docker ps -aqf name=django-container", returnStdout: true).trim()
+                    def containerId = bat(script: "docker ps -aqf name=django-container", returnStdout: true).trim()
                     
                     // Copy report.xml from the Docker container to Jenkins workspace
-                    sh "docker cp ${containerId}:/app/report.xml ./report.xml"
+                    bat "docker cp ${containerId}:/app/report.xml ./report.xml"
                 }
             }
         }

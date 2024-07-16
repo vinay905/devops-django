@@ -18,6 +18,13 @@ pipeline {
                 }
             }
         }
+
+        stage('Report Results') {
+            withEnv {
+                TEST_RESULTS_DIR = 'C:/Users/Vinay/Desktop/PythonDevops'
+            }
+            junit "${TEST_RESULTS_DIR}/report.xml"
+        }
     }
     post {
         always {

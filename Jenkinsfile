@@ -18,21 +18,5 @@ pipeline {
                 }
             }
         }
-
-        stage('Report Results') {
-            steps {
-                script {
-                    withEnv(['TEST_RESULTS_DIR=C:/Users/Vinay/Desktop/PythonDevops']) {
-                        junit "${env.TEST_RESULTS_DIR}/report.xml"
-                    }
-                }
-            }
-        }
-    }
-    post {
-        always {
-            junit 'reports/test-results.xml'
-            cleanWs()
-        }
     }
 }

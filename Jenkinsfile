@@ -1,8 +1,5 @@
 pipeline {
-    agent
-    {
-        docker {image 'node:django-devops'} 
-    }
+    agent any
     stages 
     { 
         stage('Build Docker image') 
@@ -18,7 +15,7 @@ pipeline {
         {
             steps {
                 script {
-                    bat 'docker run django-devops'
+                    docker.image("django-devops").run("--rm --name django-container")
                 }
             }
         }

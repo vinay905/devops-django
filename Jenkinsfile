@@ -13,11 +13,11 @@ pipeline {
 
         stage('Run tests') 
         {
-            steps {
-                script {
-                    docker.image("django-devops").run("--rm --name django-container")
+            script {
+                    docker.image('django-devops').inside {
+                        sh 'pytest --junitxml=report.xml'
+                    }
                 }
-            }
         }
     }
     

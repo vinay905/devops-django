@@ -20,10 +20,13 @@ pipeline {
         }
 
         stage('Report Results') {
-            withEnv {
+            steps
+            {
+                withEnv {
                 TEST_RESULTS_DIR = 'C:/Users/Vinay/Desktop/PythonDevops'
+                }
+                junit "${TEST_RESULTS_DIR}/report.xml"
             }
-            junit "${TEST_RESULTS_DIR}/report.xml"
         }
     }
     post {

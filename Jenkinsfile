@@ -19,13 +19,11 @@ pipeline {
             }
         }
 
-        // stage('Copy Report') {
-        //     steps {
-        //         script {
-        //             bat 'docker cp $(docker ps -aqf "name=django-devops"):/app/report.xml ./report.xml'
-        //             //  junit '*/target/report.xml'
-        //         }
-        //     }
-        // }
+        stage('Report Results') 
+        {
+            steps {
+                junit '**/test_report.html'  
+                }
+        }
     }
 }

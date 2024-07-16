@@ -17,5 +17,5 @@ COPY . .
 EXPOSE 8000
 
 # run the tests
-CMD ["pytest", "mytests/test_views.py","--junitxml=/app/report.xml"]
+CMD ["pytest", "mytests/test_views.py","--junitxml=./report.xml"]
 
